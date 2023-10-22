@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo ">LISTADO DE PRODUCTOS</span>
+          <button class="btn btn-success float-end" routerLink="/crear-producto">Nuevo</button>
+          <div class="table-responsive mt-2">
+            <table class="table table-stripped">
+              <thead>
+                <th>Producto</th>
+                <th>Categoria</th>
+                <th>Ubicación</th>
+                <th>Precio</th>
+                <th></th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of productos">
+                  <td>{{producto.nombre}}</td>
+                  <td>{{producto.categoria}}</td>
+                  <td>{{producto.ubicacion}}</td>
+                  <td>{{producto.precio}}</td>
+                  <td >
+                    <i [routerLink]="['/editar-producto/',producto._id]"
+                    class="text-primary bi bi-pencil-square h3"></i>
+                    &nbsp;
+                    <i (click)="deleteProduct(producto._id)"
+                    class="text-danger bi bi-trash3-fill h3"></i>
+                  </td>
+                </tr>
+              </tbody>
+             </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

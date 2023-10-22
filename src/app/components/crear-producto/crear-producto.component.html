@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">{{title | titlecase}}</span>
+          <form [formGroup]="myForm"
+            (ngSubmit)="onNewProduct()">
+            <div class="mb-3">
+              <input type="text"
+              formControlName="producto"
+              class="form-control form-control-lg mt-4"
+              placeholder="Producto" >
+              <div class="text-danger"
+              *ngIf="myForm.get('producto')?.hasError('required') && myForm.get('producto')?.touched">
+              El producto es <span>obligatorio</span></div>
+            </div>
+            <div class="mb-3">
+              <input type="text"
+              formControlName="categoria"
+              class="form-control form-control-lg"
+              placeholder="Categoria">
+              <div class="text-danger"
+              *ngIf="myForm.get('categoria')?.hasError('required') && myForm.get('categoria')?.touched">
+              La categoría es <span>obligatoria</span></div>
+            </div>
+            <div class="mb-3">
+              <input type="text"
+              formControlName="ubicacion"
+              class="form-control form-control-lg"
+              placeholder="Ubicación"  >
+              <div class="text-danger"
+              *ngIf="myForm.get('ubicacion')?.hasError('required') && myForm.get('ubicacion')?.touched">La ubicación es <span>obligatoria</span></div>
+            </div>
+            <div class="mb-3">
+              <input type="number"
+              formControlName="precio"
+              steps="0.01" min="0"
+              class="form-control form-control-lg"
+              placeholder="Precio">
+              <div class="text-danger"
+              *ngIf="myForm.get('precio')?.hasError('required') && myForm.get('precio')?.touched" >El precio es <span>obligatorio</span></div>
+              <div class="text-danger"
+              *ngIf="myForm.get('precio')?.hasError('minLength') && myForm.get('precio')?.touched">El precio debe ser mayor a 0</div>
+            </div>
+            <div class="mb-3 d-flex justify-content-end">
+              <button
+              class="btn btn-secondary"
+              routerLink="/"
+              >Volver
+            </button>
+              <button class="btn btn-success ms-3">Aceptar</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
